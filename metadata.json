@@ -1,0 +1,9 @@
+{
+  "name": "Copy of H²-ALA Tutor",
+  "description": "A Hybrid Human-AI Learning Assistant focusing on Socratic tutoring, explainable AI logs, and teacher intervention dashboards.",
+  "requestFramePermissions": [
+    "microphone",
+    "camera",
+    "display-capture"
+  ]
+}
