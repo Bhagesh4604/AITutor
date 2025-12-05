@@ -1,0 +1,96 @@
+This file provides detailed instructions on how to set up and run this project from a fresh download (e.g., after downloading it as a ZIP from GitHub).
+
+**Prerequisites:**
+*   Node.js and npm: https://nodejs.org/
+*   Python: https://www.python.org/
+
+---
+
+### **Step 1: Download and Unzip**
+
+1.  Download the project ZIP from your GitHub repository.
+2.  Unzip the contents to a location on your computer. For these instructions, we will assume you have unzipped it to `C:\Users\bhage\Desktop\AITutor-from-zip`.
+
+---
+
+### **Step 2: Set up the Frontend**
+
+1.  **Navigate to the project directory in a terminal:**
+    ```bash
+    cd C:\Users\bhage\Desktop\AITutor-from-zip
+    ```
+
+2.  **Install the frontend dependencies:**
+    *   This command reads the `package.json` file and downloads all the necessary libraries for the frontend.
+    ```bash
+    npm install
+    ```
+
+---
+
+### **Step 3: Set up the Backend**
+
+*All of these commands should be run from the same terminal, still inside the main project directory (`C:\Users\bhage\Desktop\AITutor-from-zip`)*
+
+1.  **Create a Python virtual environment:**
+    *   This creates an isolated environment for the backend's Python packages, preventing conflicts with other projects.
+    ```bash
+    python -m venv backend\venv
+    ```
+
+2.  **Install backend dependencies:**
+    *   This command activates the virtual environment's `pip` to install all the libraries listed in `backend/requirements.txt`.
+    ```bash
+    .\backend\venv\Scripts\pip install -r backend\requirements.txt
+    ```
+
+3.  **Create the environment variables file:**
+    *   This file stores your secret API key.
+    *   Create a new file named `.env` inside the `backend` folder (`C:\Users\bhage\Desktop\AITutor-from-zip\backend\.env`).
+    *   Add the following line to the file, replacing `YOUR_API_KEY` with your actual key:
+    ```
+    GEMINI_API_KEY=YOUR_API_KEY
+    ```
+
+4.  **Create the database:**
+    *   This command uses the migration files to create the `app.db` file and set up all the necessary tables.
+    *   First, you need to set the `FLASK_APP` environment variable. Create a file named `.flaskenv` in the root project directory (`C:\Users\bhage\Desktop\AITutor-from-zip\.flaskenv`) and add this line:
+    ```
+    FLASK_APP=backend
+    ```
+    *   Now, run the database upgrade command:
+    ```bash
+    .\backend\venv\Scripts\flask db upgrade
+    ```
+
+---
+
+### **Step 4: Run the Application**
+
+*You will need two separate terminals open at the same time.*
+
+**Terminal 1: Run the Backend Server**
+
+1.  **Navigate to the project directory:**
+    ```bash
+    cd C:\Users\bhage\Desktop\AITutor-from-zip
+    ```
+2.  **Run the Flask server:**
+    ```bash
+    .\backend\venv\Scripts\flask run
+    ```
+    *   Leave this terminal running. You should see output indicating it is running on `http://127.0.0.1:5000`.
+
+**Terminal 2: Run the Frontend Application**
+
+1.  **Navigate to the project directory:**
+    ```bash
+    cd C:\Users\bhage\Desktop\AITutor-from-zip
+    ```
+2.  **Run the Vite development server:**
+    ```bash
+    npm run dev
+    ```
+    *   This will automatically open the application in your web browser, usually at `http://localhost:3000`.
+
+You can now use the application.
